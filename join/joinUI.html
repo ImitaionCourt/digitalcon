@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <meta name="generator"
+    content="HTML Tidy for HTML5 (experimental) for Windows https://github.com/w3c/tidy-html5/tree/c63cc39" />
+    <title></title>
+  </head>
+  <body>
+    <form id="joinUI" name="joinUI" accept-charset="utf-8" action="join.php" method="post">
+      <div>
+        <input type="text" class="form-control" name="ID" id="ID" placeholder="ID" autofocus="" />
+      </div>
+      <br />
+      <div>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Password" />
+      </div>
+      <br />
+      <div>
+        <input type="text" class="form-control" name="username" id="username" placeholder="Username (Nickname)" autofocus="" />
+      </div>
+      <br />
+      <div>
+        <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number_(No Hyphen!)" autofocus="" />
+      </div>
+	  <br />
+	  <div>
+        <input type="text" class="form-control" name="age" id="age" placeholder="Your age" autofocus="" />
+      </div>
+      <br />
+      <div>
+      <textarea rows="5" cols="30" class="form-control" id="intro" name="intro">Over 500 is substr &gt;&lt;</textarea> 
+      <script type="text/javascript">
+        $(document).ready(function() {
+                $(&#39;#test&#39;).on(&#39;keyup&#39;, function() {
+                        if($(this).val().length &gt; 500) {
+                                $(this).val($(this).val().substring(0, 500));
+                        }
+                });
+        });
+
+</script></div>
+      <br />
+      <div>
+        <button type="submit" class="form-control btn btn-primary">회원가입</button>
+      </div>
+    </form>
+  </body>
+</html>
