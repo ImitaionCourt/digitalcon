@@ -1,0 +1,43 @@
+<form id="joinUI" name="joinUI" accept-charset="utf-8" action="join.php" method="post">
+      <div class="field">
+        <input type="text" class="input is-info" name="ID" id="ID" placeholder="ID" autofocus="" />
+      </div>
+      <br />
+      <div class="field">
+        <p class="control has-icons-left">
+		<input type="password" class="input is-info" name="password" id="password" placeholder="Password" />
+		<span class="icon is-small is-left">
+			<i class="fa fa-lock"></i>
+		</span>
+		</p>
+      </div>
+      <br />
+      <div class="field">
+        <input type="text" class="input is-info" name="username" id="username" placeholder="Username (Nickname)" autofocus="" />
+      </div>
+      <br />
+      <div class="field">
+        <input type="text" class="input is-info" name="phone" id="phone" placeholder="Phone Number_(No Hyphen!)" autofocus="" />
+      </div>
+	  <br />
+	  <div>
+        <input type="text" class="input is-info" name="age" id="age" placeholder="Your age" autofocus="" />
+      </div>
+      <br />
+      <div class="field">
+      <textarea rows="5" cols="30" class="input is-info" id="intro" name="intro">Over 500 is substr &gt;&lt;</textarea> 
+      <script type="text/javascript">
+        $(document).ready(function() {
+                $(&#39;#test&#39;).on(&#39;keyup&#39;, function() {
+                        if($(this).val().length &gt; 500) {
+                                $(this).val($(this).val().substring(0, 500));
+                        }
+                });
+        });
+		</script>
+</div>
+      <br />
+      <div class="field" style="margin-top: 5%">
+        <button type="submit" class="button is-primary">Join</button>
+      </div>
+    </form>

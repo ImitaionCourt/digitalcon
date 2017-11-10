@@ -5,43 +5,74 @@
     <title></title>
   </head>
   <body>
-    <form id="joinUI" name="joinUI" accept-charset="utf-8" action="join.php" method="post">
-      <div>
-        <input type="text" class="form-control" name="ID" id="ID" placeholder="ID" autofocus="" />
-      </div>
-      <br />
-      <div>
-        <input type="password" class="form-control" name="password" id="password" placeholder="Password" />
-      </div>
-      <br />
-      <div>
-        <input type="text" class="form-control" name="username" id="username" placeholder="Username (Nickname)" autofocus="" />
-      </div>
-      <br />
-      <div>
-        <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number_(No Hyphen!)" autofocus="" />
-      </div>
-	  <br />
-	  <div>
-        <input type="text" class="form-control" name="age" id="age" placeholder="Your age" autofocus="" />
-      </div>
-      <br />
-      <div>
-      <textarea rows="5" cols="30" class="form-control" id="intro" name="intro">Over 500 is substr &gt;&lt;</textarea> 
-      <script type="text/javascript">
+    <div class="notification">
+      <section class="hero is-primary is-bold">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">Welcome to our Webpage</h1>
+            <h2 class="subtitle">Please Register</h2>
+          </div>
+        </div>
+      </section>
+      <section class="hero is-light is-bold">
+        <nav class="level">
+          <div class="level-item">
+            <div class="tile is-parent is-vertical is-5">
+              <article class="tile is-child notification is-light" style="padding:20%">
+                <h1 class="title" style="margin-bottom: 10%">Register For This Site</h1>
+                <form id="joinUI" name="joinUI" accept-charset="utf-8" action="join.php" method="post">
+                  <div class="field">
+                    <input type="text" class="input is-info" name="ID" id="ID" placeholder="ID" autofocus="" />
+                  </div>
+                  <br />
+                  <div class="field">
+                    <p class="control has-icons-left">
+                      <input type="password" class="input is-info" name="password" id="password" placeholder="Password" />
+                    </p>
+                  </div>
+                  <br />
+                  <div class="field">
+                    <input type="text" class="input is-info" name="username" id="username" placeholder="Username (Nickname)"
+                    autofocus="" />
+                  </div>
+                  <br />
+                  <div class="field">
+                    <input type="text" class="input is-info" name="phone" id="phone" placeholder="Phone Number_(No Hyphen!)"
+                    autofocus="" />
+                  </div>
+                  <br />
+                  <div>
+                    <input type="text" class="input is-info" name="age" id="age" placeholder="Your age" autofocus="" />
+                  </div>
+                  <br />
+                  <div class="field">
+                  <textarea rows="5" cols="30" class="input is-info" id="intro" name="intro">Over 500 is substr &gt;&lt;</textarea>
+                  
+                  <script type="text/javascript">
         $(document).ready(function() {
-                $(&#39;#test&#39;).on(&#39;keyup&#39;, function() {
-                        if($(this).val().length &gt; 500) {
+                $(&amp;#39;#test&amp;#39;).on(&amp;#39;keyup&amp;#39;, function() {
+                        if($(this).val().length &amp;gt; 500) {
                                 $(this).val($(this).val().substring(0, 500));
                         }
                 });
         });
-
+                
 </script></div>
-      <br />
-      <div>
-        <button type="submit" class="form-control btn btn-primary">회원가입</button>
-      </div>
-    </form>
+                  <br />
+                  <div class="field" style="margin-top: 5%">
+                    <button type="submit" class="button is-primary">Join</button>
+                  </div>
+                </form>
+              </article>
+            </div>
+          </div>
+        </nav>
+      </section>
+      <footer class="footer hero is-info is-bold">
+        <div class="container">
+          <div class="content has-text-centered">this is footer section</div>
+        </div>
+      </footer>
+    </div>
   </body>
 </html>
