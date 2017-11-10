@@ -1,11 +1,20 @@
+<?php
+	@session_start();
+?>
 <!doctype HTML>
 <html>
 <head>
 </head>
 <body>
-<a href='./login/'><button type="button" class="btn btn-default navbar-btn">Login</button></a>
-<a href='./logout/'><button type="button" class="btn btn-default navbar-btn">Logout</button></a>
-<a href='./join/'><button type="button" class="btn btn-default navbar-btn">join</button></a>
-<a href='./start_trial/'><button type="button" class="btn btn-default navbar-btn">Start!!</button></a>
+<?php
+if(!$_SESSION){
+echo '<a href="./login/"><button type="button" class="btn btn-default navbar-btn">Login</button></a>';
+echo '<a href="./join/"><button type="button" class="btn btn-default navbar-btn">join</button></a>';
+}
+else{
+	echo '<a href="./logout/"><button type="button" class="btn btn-default navbar-btn">Logout</button></a>';
+	echo '<a href="./start_trial/"><button type="button" class="btn btn-default navbar-btn">Start!!</button></a>';
+}
+?>
 </body>
 </html>

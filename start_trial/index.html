@@ -1,3 +1,11 @@
+<?php
+	@session_start();
+	if(!$_SESSION){
+		echo '<script>';
+		echo "alert('You need Login!'); history.go(-1);";
+		echo '</script>';
+	}
+?>
 <html>
 <head>
 
