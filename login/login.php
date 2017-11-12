@@ -20,6 +20,10 @@
 		$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 		if($row){
 			$_SESSION['ID']=base64_decode($row['ID']);
+			$_SESSION['username']=$row['username'];
+			$_SESSION['phone']=$row['phone'];
+			$_SESSION['age']=$row['age'];
+			
 			echo "<script>alert('hello!');</script>";
 			echo "<meta http-equiv='refresh' content='0;url=/digitalcon'>";
 		}

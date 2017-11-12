@@ -14,8 +14,8 @@
                                         <option value="5">5분</option>
                                    </select> <br><br>
                    Profession : <select name="Profession">
-                                    <option value="lawyer">변호사</option>
-                                    <option value="prosecutor">검사</option>
+                                    <option value="Plaintiff">원고</option>
+                                    <option value="Defendant">피고</option>
                                 </select>
 								<button type="submit" class="button is-primary">Start</button>
 
