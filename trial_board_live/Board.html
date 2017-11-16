@@ -121,9 +121,8 @@
 						else{
 							while($R=mysqli_fetch_assoc($result)){
 								echo "<tr>";
-								echo "<td>".$R['no']."</td>";
-								echo "<td>".$R['EventName']."</td>";
-								
+								echo "<td><a href='../trial_court?no={$R['no']}'>".$R['no']."</a></td>";
+								echo "<td><a href='../trial_court?no={$R['no']}'>".$R['EventName']."</a></td>";
 								if(empty($R['Plaintiff'])){
 									echo "<td><form id='enter_trial' action='../enter_trial/' accept-charset='utf-8' method='POST'> <input type='hidden' name='no' value={$R['no']}><button type='submit'>Enter</button></form></td>";
 								}

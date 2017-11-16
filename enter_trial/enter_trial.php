@@ -5,6 +5,7 @@
 		echo '<script>';
 		echo "alert('You need Login'); history.go(-1);";
 		echo '</script>';
+		die('<a herf="/digitalcon">HOME</a>');
 	}
 ?>
 <?php
@@ -29,7 +30,7 @@
 					mysqli_query($DB_connect,$DB_SQL_query);
 				}
 				echo "<script>alert('Let\'s trial~');</script>";
-				echo "<meta http-equiv='refresh' content='0;url=/digitalcon/trial_board_live'>";
+				echo "<meta http-equiv='refresh' content='0;url=/digitalcon/trial_court?no={$_POST['no']}'>";
 			}
 	}
 	else{

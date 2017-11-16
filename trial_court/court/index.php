@@ -1,10 +1,19 @@
+<?php
+	//세션설정
+	@session_start();
+	if(!$_SESSION){
+		echo '<script>';
+		echo "alert('You need Login'); history.go(-1);";
+		echo '</script>';
+	}
+?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Court</title>
+    <title>Chat</title>
     
     <link rel="stylesheet" href="style.css" type="text/css" />
     
@@ -13,18 +22,18 @@
     <script type="text/javascript">
     
         // ask user for name with popup prompt    
-        var name = prompt("Enter your chat name:", "Guest");
+        var name = "<?php echo $_SESSION['username']; ?>"; //prompt("Enter your chat name:", "Guest");
         
         // default name is 'Guest'
-    	if (!name || name === ' ') {
-    	   name = "Guest";	
-    	}
+    	//if (!name || name === ' ') {
+    	//   name = "Guest";	
+    	//}
     	
     	// strip tags
-    	name = name.replace(/(<([^>]+)>)/ig,"");
+    	name = name.replace(/(<([^>]+)>)/ig,""); // 이름에 태그 들어가는거 삭제함
     	
     	// display name on page
-    	$("#name-area").html("You are: <span>" + name + "</span>");
+    	$("#name-area").html("You are: <span>" + name + "</span>"); // 화면에 이름 출력해 주는건데 오류난다 ㅠㅠ
     	
     	// kick off chat
         var chat =  new Chat();
@@ -83,14 +92,14 @@
 
     <div id="page-wrap">
     
-        <h2><!--jQuery/PHP Chat-->~~~</h2>
+        <h2>Court</h2>
         
         <p id="name-area"></p>
         
         <div id="chat-wrap"><div id="chat-area"></div></div>
         
         <form id="send-message-area">
-            <p>Your message: </p>
+            <p>Your Speaking: </p>
             <textarea id="sendie" maxlength = '100' ></textarea>
         </form>
     

@@ -24,8 +24,11 @@
 	if($DB_connect){	
 		//echo $DB_SQL_query."<br>";
 		mysqli_query($DB_connect,$DB_SQL_query) or die('query error');
+		$Sub_DB_SQL_query="select max(no) from trial_board;";
+		$Sub_result = mysqli_query($DB_connect,$Sub_DB_SQL_query) or die('query error2');
+		$Sub_R=mysqli_fetch_assoc($Sub_result);
 		echo "<script>alert('Go~');</script>";
-		echo "<meta http-equiv='refresh' content='0;url=/digitalcon/trial_board_live'>";
+		echo "<meta http-equiv='refresh' content='0;url=/digitalcon/trial_court?no={$Sub_R['max(no)']}'>";
 	}
 	else{
 		die("Connect Failed OTL");
