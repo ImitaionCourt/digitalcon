@@ -102,7 +102,9 @@
                     <td id="td1">EventName</td>
                     <td id="td1">원고</td>
                     <td id="td1">피고</td>
-                    <td id="td1">Time</td>
+                    <td id="td1">찬성</td>
+                    <td id="td1">반대</td>
+        
                 </tr>
             </thead>
             <tbody>
@@ -115,17 +117,21 @@
 							echo "<td>No EventName~</td>";
 							echo "<td>No Plaintiff~</td>";
 							echo "<td>No Defendant~</td>";
-							echo "<td>No Time~</td>";
+							echo "<td>No agree~</td>";
+							echo "<td>No disagree~</td>";
 							echo "</tr>";
 						}
 						else{
 							while($R=mysqli_fetch_assoc($result)){
 								echo "<tr>";
-								echo "<td>".$R['no']."</td>";
-								echo "<td>".$R['EventName']."</td>";
-								echo "<td>".$R['Plaintiff']."</td>";
-								echo "<td>".$R['Defendant']."</td>";
-								echo "<td>".$R['time']."</td>";
+								echo "<td><a href='../trial_court?no={$R['no']}'>".$R['no']."</a></td>";
+								echo "<td><a href='../trial_court?no={$R['no']}'>".$R['EventName']."</a></td>";
+								echo "<td><a href='../trial_court?no={$R['no']}'>".$R['Plaintiff']."</a></td>";
+								echo "<td><a href='../trial_court?no={$R['no']}'>".$R['Defendant']."</a></td>";
+								
+								echo "<td><form id='vote_log' action='../vote_log/' accept-charset='utf-8' method='POST'> <input type='hidden' name='vote_side' value='vote_agree'> <input type='hidden' name='no' value={$R['no']}><button type='submit'>{$R['vote_agree']}</button></form></td>";
+								echo "<td><form id='vote_log' action='../vote_log/' accept-charset='utf-8' method='POST'> <input type='hidden' name='vote_side' value='vote_disagree'> <input type='hidden' name='no' value={$R['no']}><button type='submit'>{$R['vote_disagree']}</button></form></td>";
+								
 								echo "</tr>";
 							}
 						}

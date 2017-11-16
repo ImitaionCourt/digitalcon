@@ -1,0 +1,223 @@
+<?php
+	//세션설정
+	@session_start();
+	if(!$_SESSION){
+		echo '<script>';
+		echo "alert('You need Login'); history.go(-1);";
+		echo '</script>';
+	}
+?>
+<?php
+	require_once('DB_connect_for_trial_court.php');
+	$DB_SQL_query="select * from trial_board where no={$_GET['no']}";
+	$result=mysqli_query($DB_connect,$DB_SQL_query);
+	$R=mysqli_fetch_assoc($result);
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Trial_Court</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
+    <link rel="apple-touch-icon" sizes="57x57" href="../images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="../images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="../images/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="../images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="../image/png" sizes="192x192"  href="../images/favicon/android-icon-192x192.png">
+    <link rel="icon" type="../image/png" sizes="32x32" href="../images/favicon/favicon-32x32.png">
+    <link rel="icon" type="../image/png" sizes="96x96" href="../images/favicon/favicon-96x96.png">
+    <link rel="icon" type="../image/png" sizes="16x16" href="../images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../images/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="../images/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="chat.js"></script>
+    <script type="text/javascript">
+    
+        // ask user for name with popup prompt    
+        var name = "<?php echo $_SESSION['username']; ?>";
+    	var job = "<?php if($_SESSION['username']==$R['Plaintiff']){ echo "Plaintiff";} else{ echo "Defendant";}?>";
+    	var no = "<?php echo $_GET['no'];?>";
+		// strip tags
+    	name = name.replace(/(<([^>]+)>)/ig,""); // 이름에 태그 들어가는거 삭제함
+    	
+    	// display name on page
+    	$("#name-area").html("You are: <span>" + name + "</span>"); // 화면에 이름 출력해 주는건데 오류난다 ㅠㅠ
+    	
+    	// kick off chat
+        var chat =  new Chat();
+    	$(function() {
+    	
+    		 chat.getState(); 
+    		 
+    		 // watch textarea for key presses
+             $("#sendie").keydown(function(event) {  
+             
+                 var key = event.which;  
+           
+                 //all keys including return.  
+                 if (key >= 33) {
+                   
+                     var maxLength = $(this).attr("maxlength");  
+                     var length = this.value.length;  
+                     
+                     // don't allow new content if length is maxed out
+                     if (length >= maxLength) {  
+                         event.preventDefault();  
+                     }  
+                  }  
+    		 																																																});
+    		 // watch textarea for release of key press
+    		 $('#sendie').keyup(function(e) {	
+    		 					 
+    			  if (e.keyCode == 13) { 
+    			  
+                    var text = $(this).val();
+    				var maxLength = $(this).attr("maxlength");  
+                    var length = text.length; 
+                     
+                    // send 
+                    if (length <= maxLength + 1) { 
+                     
+    			        chat.send(text, name, no);	
+    			        $(this).val("");
+    			        
+                    } else {
+                    
+    					$(this).val(text.substring(0, maxLength));
+    					
+    				}	
+    				
+    				
+    			  }
+             });
+            
+    	});
+    </script>
+	<script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+      // Get all "navbar-burger" elements
+      var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+      // Check if there are any navbar burgers
+      if ($navbarBurgers.length > 0) {
+
+        // Add a click event on each of them
+        $navbarBurgers.forEach(function ($el) {
+          $el.addEventListener('click', function () {
+
+            // Get the target from the "data-target" attribute
+            var target = $el.dataset.target;
+            var $target = document.getElementById(target);
+
+            // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+            $el.classList.toggle('is-active');
+            $target.classList.toggle('is-active');
+
+          });
+        });
+      }
+
+    }); 
+    </script>
+    <style>
+        
+    </style>
+</head>
+<body>
+	<section class="hero is-large">
+	  <div class="hero is-dark">
+	    <nav class="navbar">
+	      <div class="container">
+	        <div class="navbar-brand">
+              <a><img src="images/CT.png" width="40px;" style="position : relative; top:20%; right:10%;"></a>
+	          <a class="navbar-item" style="font-size:2.25em" href="index.html">
+	           	<strong>Court</strong> 
+	          </a>
+	          <span class="navbar-burger burger" data-target="navbarMenuHeroB">
+	            <span></span>
+	            <span></span>
+	            <span></span>
+	          </span>
+	        </div>
+	        <div id="navbarMenuHeroB" class="navbar-menu">
+	          <div class="navbar-end">
+	            <?php
+					if(!$_SESSION){
+						echo '<span class="navbar-item"><a href="./login" class="button is-dark is-medium"><i class="fa fa-sign-in signIcon" aria-hidden="true"></i>Log in / Register</a></span>';
+					}
+					else{
+						echo '<span class="navbar-item"><a href="./logout" class="button is-dark is-medium"><i class="fa fa-sign-in signIcon" aria-hidden="true"></i>Logout</a></span>';
+					}
+				?>
+	            <a class="navbar-item" href="../About.html">
+	              About
+	            </a>
+	            <a class="navbar-item" href="../Notes.html">
+	              Notes
+	            </a>
+	            <a class="navbar-item" href="../trial_board_live">
+	              Live_Court
+	            </a>
+                <a class="navbar-item" href="../trial_board_past">
+	              Past_Court
+	            </a>
+	            
+	          </div>
+	        </div>
+	      </div>
+	    </nav>
+	  </div>
+        <div style="text-align:center;"><img src="../images/judge.png" style="width:120px; padding-top:15px; border-radius:30px;"></div>
+        <br><br>
+        <div>
+            <div id="plaintiff"; style="width:10%;float:left;">
+                <img src="../images/plaintiff.png" style="width:120px; padding-top:15px; border-radius:30px; position:relative; left:25%;">
+            </div>
+            <div style="width:80%;float:left; border-radius:10px; height:400px; position:relative; left:7%;">
+                <div id="chat-area";style="width:80%; height:300px; margin: 0 auto;"></div>
+            </div>
+            <div id="defendant"; style="width:10%; float:left;">
+                <img src="../images/defendant.png" style="width:120px; padding-top:15px; border-radius:30px; position:relative; right:10%;">
+            </div>
+        </div>
+			<form id="send-message-area">
+				<div style="margin: 0px 25% 0px 20%;">
+					<?php
+						if($_SESSION['username']==$R['Plaintiff'] || $_SESSION['username']==$R['Defendant']){
+							
+							echo "<textarea id='sendie'; maxlength='10000'; placeholder='This is Your message-box' style='width:800px;height:150px;'></textarea>";
+						}
+					?>
+					</div>
+			</form>
+				<br><br>
+	</section>
+        <footer class="footer">
+          <div class="container">
+            <div class="content has-text-centered">
+              <div style="padding:0">
+                  <a class="fa fa-facebook fa-2x" aria-hidden="true"></a>
+                  <a class="fa fa-github fa-2x" aria-hidden="true"></a>
+                  <a class="fa fa-twitter fa-2x" aria-hidden="true"></a>
+              </div>
+              <h1>
+              <span style="color:gray">Come with us to start our </span>'Court System'
+              </h1>
+                <a class="button is-dark is-medium">Donation for</a>
+                <a class="button is-dark is-medium">Join our Community</a>
+            </div>
+          </div>
+        </footer>
+
+</body>
+</html>

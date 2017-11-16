@@ -8,5 +8,22 @@
 	}
 ?>
 <?php
-	include('main.php');
+	if(!$_GET){
+		echo 'Give me [no] parameter';
+	}
+	if(preg_match('/[^0-9]/i',$_GET['no'])){
+		echo 'Must be integer!!  ^^*;;';
+	}
+	else{
+	require_once('DB_connect_for_trial_court.php');
+	$DB_SQL_query="select * from trial_board where no={$_GET['no']}";
+	$result=mysqli_query($DB_connect,$DB_SQL_query);
+	$R=mysqli_fetch_assoc($result);
+	if($R['is_live']==0){
+		include('trial_court_past.php');
+	}
+	else{
+		include('Trial_Court.html');
+	}
+	}
 ?>

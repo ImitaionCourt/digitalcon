@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Notes</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css">
+    <link rel="apple-touch-icon" sizes="57x57" href="./images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./images/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./images/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./images/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="./images/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./images/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="./images/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+      // Get all "navbar-burger" elements
+      var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+      // Check if there are any navbar burgers
+      if ($navbarBurgers.length > 0) {
+
+        // Add a click event on each of them
+        $navbarBurgers.forEach(function ($el) {
+          $el.addEventListener('click', function () {
+
+            // Get the target from the "data-target" attribute
+            var target = $el.dataset.target;
+            var $target = document.getElementById(target);
+
+            // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+            $el.classList.toggle('is-active');
+            $target.classList.toggle('is-active');
+
+          });
+        });
+      }
+
+    }); 
+    </script>
+    <style>
+        @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+        .tit{
+            text-align: center;
+            font-size:43px;
+            color: black;
+            font-weight: bold;
+            padding-bottom: 20px;
+            padding-top: 20px;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        .content{
+            font-size: 20px;
+            padding: 20px;
+            color: black;
+            font-family: 'Noto Sans KR', sans-serif;
+            
+        }
+        .contit {
+            font-size: 23px;
+            font-weight: 700;
+            
+        }
+        hr {
+            border: 0;
+            height: 3px;
+            background: #848484;
+        }
+    </style>
+</head>
+<body>
+	<section class="hero is-large">
+	  <div class="hero is-dark">
+	    <nav class="navbar">
+	      <div class="container">
+	        <div class="navbar-brand">
+              <a><img src="images/CT.png" width="40px;" style="position : relative; top:20%; right:10%;"></a>
+	          <a class="navbar-item" style="font-size:2.25em" href="index.html">
+	           	<strong>Court</strong> 
+	          </a>
+	          <span class="navbar-burger burger" data-target="navbarMenuHeroB">
+	            <span></span>
+	            <span></span>
+	            <span></span>
+	          </span>
+	        </div>
+	        <div id="navbarMenuHeroB" class="navbar-menu">
+	          <div class="navbar-end">
+	            <?php
+					if(!$_SESSION){
+						echo '<span class="navbar-item"><a href="./login" class="button is-dark is-medium"><i class="fa fa-sign-in signIcon" aria-hidden="true"></i>Log in / Register</a></span>';
+					}
+					else{
+						echo '<span class="navbar-item"><a href="./logout" class="button is-dark is-medium"><i class="fa fa-sign-in signIcon" aria-hidden="true"></i>Logout</a></span>';
+					}
+				?>
+	            <a class="navbar-item" href="About.html">
+	              About
+	            </a>
+	            <a class="navbar-item" href="Notes.html">
+	              Notes
+	            </a>
+	            <a class="navbar-item" href="./trial_board_live">
+	              Live_Court
+	            </a>
+                <a class="navbar-item" href="./trial_board_past">
+	              Past_Court
+	            </a>
+	          </div>
+	        </div>
+	      </div>
+	    </nav>
+	  </div>
+	</section>
+        <div class="hero is-white-ter">
+            <span class="tit">참고사항</span>
+            <div class="content"><span class="contit">1. 종교단체의 징계결의가 재판의 대상인가?</span><br><br>
+                &nbsp;&nbsp;종교단체의 징계결의는 종교단체 내부의 규제로서 헌법이 보장하고 있는, 국민이 누릴 수 있는 자유 중 하나인 <a href="https://namu.wiki/w/%EC%A2%85%EA%B5%90%EC%9D%98%20%EC%9E%90%EC%9C%A0"><span class="contit">종교자유</span></a>의 영역에 속한다.<hr><br>
+                <span class="contit">2. <a href="https://namu.wiki/w/%EA%B0%80%EC%95%95%EB%A5%98"><span class="contit">가압류</span></a>로 인한 손해배상책임이 가압류채권자에게 있는가?</span><br><br>
+                &nbsp;&nbsp; <span style="font-weight:600;">제276조(가압류의 목적)</span><span style="line-height:250%"><br></span>
+                &nbsp;&nbsp;&nbsp;&nbsp;① 가압류는 금전채권이나 금전으로 환산할 수 있는 채권에 대하여 동산 또는 부동산에 대한 강제집행을 보전하기 위하여 할 수 있다.<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;② 제1항의 채권이 조건이 붙어 있는 것이거나 기한이 차지 아니한 것인 경우에도 가압류를 할 수 있다.
+                <span style="line-height:250%"><br></span><br>
+                &nbsp;&nbsp;&nbsp;가압류결정에서 특정된 대상채권을 가압류채무자의 채권이라고 기재하여 제3채무자에게 그 채권에 관한 지급을 금지할 것을 명하고있다.
+                <hr><br>
+                <span class="contit">3. 아파트 층간소음 건축주 배상을 어떻게 해야 하는가?</span><br><br>
+                &nbsp;&nbsp; <span style="font-weight:600">층간소음의 수인한도</span><span style="line-height:250%"><br></span>
+                &nbsp;&nbsp;&nbsp;&nbsp;8세대를 표본으로 소음도를 측정한 결과 화장실을 사용하지 않을 때의 주간 평균 소음도는 53.4±2dB이고 야간에는 50.2±2dB이며, 생활용수를 급배수하고 있을 때의 주간 <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;평균 소음도는 58.2±2dB이고, 야간에는 55.8±2dB이며, 야간에 바로 위층 화장실에서 배수를 할 경우 아래층에서 측정된 소음도는 54.8±2dB이었다. 일반적으로 주거지<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;역의 소음도는 주간 55dB, 야간 45dB 미만일 때 정온한 생활을 유지할 수 있고, 야간에 숙면을 취하기 위하여는 35dB 미만의 조건이 구비되어야 한다.
+                <br><br>
+                &nbsp;&nbsp; <span style="font-weight:600">층간소음 배상책임 관련 법률</span><span style="line-height:250%"><br></span>
+                &nbsp;&nbsp;&nbsp;&nbsp;집합건물의 소유 및 관리에 관한 법률 제<a href="http://www.law.go.kr/법령/집합건물의소유및관리에관한법률/(20160812,13805,20160119)/제9조"><span class="contit">9조</span></a>와 민법 제<a href="http://www.law.go.kr/법령/민법/(20170603,14278,20161202)/제667조"><span class="contit">667조</span></a>, 제<a href="http://www.law.go.kr/법령/민법/(20170603,14278,20161202)/제667조"><span class="contit">671조</span></a>
+                <br><br>
+                <hr>
+            </div>
+        </div>
+    
+    
+        <footer class="footer">
+          <div class="container">
+            <div class="content has-text-centered">
+              <div style="padding:0">
+                  <a class="fa fa-facebook fa-2x" aria-hidden="true"></a>
+                  <a class="fa fa-github fa-2x" aria-hidden="true"></a>
+                  <a class="fa fa-twitter fa-2x" aria-hidden="true"></a>
+              </div>
+              <h1>
+              <span style="color:gray">Come with us to start our </span>'Court System'
+              </h1>
+                <a class="button is-dark is-medium">Donation for</a>
+                <a class="button is-dark is-medium">Join our Community</a>
+            </div>
+          </div>
+        </footer>
+
+</body>
+</html>

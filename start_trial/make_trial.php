@@ -11,10 +11,10 @@
 	$Profession = $_POST['Profession'];
 	$Time = $_POST['Time'];
 	if($Profession==='Plaintiff'){
-		 /*방장이 Plaintiff*/$DB_SQL_query="INSERT INTO trial_board (`no`, `EventName`, `Plaintiff`, `Defendant`, `time`, `vote_agree`, `vote_disagree`,`is_live`) VALUES (NULL, '{$EventName}', '{$_SESSION['username']}', '', '{$Time}', '0', '0','1');";
+		 /*방장이 Plaintiff*/$DB_SQL_query="INSERT INTO trial_board (`no`, `EventName`, `Plaintiff`, `Defendant`, `time`, `vote_agree`, `vote_disagree`,`is_live`,`vote_total`) VALUES (NULL, '{$EventName}', '{$_SESSION['username']}', '', '{$Time}', '0', '0','1','100');";
 	}
 	else if($Profession==='Defendant'){
-		/*방장이 Defendant*/$DB_SQL_query="INSERT INTO trial_board (`no`, `EventName`, `Plaintiff`, `Defendant`, `time`, `vote_agree`, `vote_disagree`,`is_live`) VALUES (NULL, '{$EventName}', '', '{$_SESSION['username']}', '{$Time}', '0', '0','1');";
+		/*방장이 Defendant*/$DB_SQL_query="INSERT INTO trial_board (`no`, `EventName`, `Plaintiff`, `Defendant`, `time`, `vote_agree`, `vote_disagree`,`is_live`, `vote_total`) VALUES (NULL, '{$EventName}', '', '{$_SESSION['username']}', '{$Time}', '0', '0','1','100');";
 	}
 	else die("NOP");
 	
