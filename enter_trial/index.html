@@ -1,0 +1,18 @@
+<?php
+	//세션설정
+	@session_start();
+	if(!$_SESSION){
+		echo '<script>';
+		echo "alert('You need Login'); history.go(-1);";
+		echo '</script>';
+	}
+?>
+<html>
+<head>
+</head>
+<body>
+<?php
+	include('enter_trial.php');
+?>
+</body>
+</html>
