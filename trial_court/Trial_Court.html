@@ -39,13 +39,15 @@
     <meta name="msapplication-TileImage" content="../images/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script type="text/javascript" src="chat.js"></script>
-    <script type="text/javascript">
+    <script type="text/javascript" src="court.js"></script>
+	<script type="text/javascript">
     
         // ask user for name with popup prompt    
         var name = "<?php echo $_SESSION['username']; ?>";
-    	var job = "<?php if($_SESSION['username']==$R['Plaintiff']){ echo "Plaintiff";} else{ echo "Defendant";}?>";
-    	var no = "<?php echo $_GET['no'];?>";
+    	var myjob = "<?php if($_SESSION['username']==$R['Plaintiff']){ echo "Plaintiff";} else{ echo "Defendant";}?>";
+    	//var myjob = "<?php echo "sex";?>";
+    	var no = <?php echo $_GET['no'];?>;
+		
 		// strip tags
     	name = name.replace(/(<([^>]+)>)/ig,""); // 이름에 태그 들어가는거 삭제함
     	
@@ -56,7 +58,7 @@
         var chat =  new Chat();
     	$(function() {
     	
-    		 chat.getState(); 
+    		 chat.getState(no); 
     		 
     		 // watch textarea for key presses
              $("#sendie").keydown(function(event) {  
@@ -87,7 +89,7 @@
                     // send 
                     if (length <= maxLength + 1) { 
                      
-    			        chat.send(text, name, no);	
+    			        chat.send(text, name, myjob, no);	
     			        $(this).val("");
     			        
                     } else {
@@ -130,10 +132,39 @@
     }); 
     </script>
     <style>
-        
+        #Plaintiff span{
+		 background-color:blue;
+		}
+		#Defendant span{
+		 background-color:red;
+		}
+button:hover{
+  background:#fff;
+  color:#1AAB8A;
+}
+button:before,button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+button:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+button:hover:before,button:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
     </style>
 </head>
-<body>
+<body onload="setInterval('chat.update(no)', 500)">
 	<section class="hero is-large">
 	  <div class="hero is-dark">
 	    <nav class="navbar">
@@ -179,12 +210,14 @@
 	  </div>
         <div style="text-align:center;"><img src="../images/judge.png" style="width:120px; padding-top:15px; border-radius:30px;"></div>
         <br><br>
+		<div id="ViewTimer"></div>
         <div>
-            <div id="plaintiff"; style="width:10%;float:left;">
+            <div id='page-wrap'>
+			<div id="plaintiff"; style="width:10%;float:left;">
                 <img src="../images/plaintiff.png" style="width:120px; padding-top:15px; border-radius:30px; position:relative; left:25%;">
             </div>
             <div style="width:80%;float:left; border-radius:10px; height:400px; position:relative; left:7%;">
-                <div id="chat-area";style="width:80%; height:300px; margin: 0 auto;"></div>
+                <div id="chat-wrap";style="border: 1px solid #eee; margin: 0 0 15px 0;"><div id="chat-area";style="height: 300px; overflow: auto; border: 1px solid #666; padding: 20px; background: white;"></div></div>
             </div>
             <div id="defendant"; style="width:10%; float:left;">
                 <img src="../images/defendant.png" style="width:120px; padding-top:15px; border-radius:30px; position:relative; right:10%;">
@@ -197,14 +230,26 @@
 							
 							echo "<textarea id='sendie'; maxlength='10000'; placeholder='This is Your message-box' style='width:800px;height:150px;'></textarea>";
 						}
+						else{
+							echo "<textarea id='sendie'; maxlength='10000'; placeholder='This is Your message-box' style='width:1px;height:1px;'></textarea>";
+						}
 					?>
 					</div>
 			</form>
+			</div>
 				<br><br>
 	</section>
         <footer class="footer">
-          <div class="container">
+		  
+		<div class="container">
             <div class="content has-text-centered">
+		<form method='POST' action='end_trial.php' accept-charset='utf-8' id='end_trial'>
+			<input type='hidden' name='end_switch' value=<?php echo $_GET['no'];?> >
+			<button type='submit' style='border-radius: 50%;background:#1AAB8A;color:#fff;border:none;position:relative;height:60px;font-size:1.6em;padding:0 2em;cursor:pointer;transition:800ms ease all;outline:none;'>End Trial</button>
+		  </form>
+		  <br>
+		  <br>
+		  <br>
               <div style="padding:0">
                   <a class="fa fa-facebook fa-2x" aria-hidden="true"></a>
                   <a class="fa fa-github fa-2x" aria-hidden="true"></a>
